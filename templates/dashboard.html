@@ -1,0 +1,741 @@
+{% extends "base.html" %}
+
+
+{% block title %}
+
+Dashboard | PayloadShield Lab
+
+{% endblock %}
+
+
+{% block page_title %}
+
+Security Analysis Dashboard
+
+{% endblock %}
+
+
+{% block content %}
+
+
+<!-- =========================================
+     Dashboard Introduction
+========================================= -->
+
+<div class="mb-4">
+
+    <h3>Welcome to PayloadShield Lab</h3>
+
+    <p class="text-secondary">
+
+        Analyze controlled payload transformations and evaluate
+        simulated signature-based detection behavior.
+
+    </p>
+
+</div>
+
+
+<!-- =========================================
+     Primary Statistics
+========================================= -->
+
+<div class="row g-4">
+
+
+    <div class="col-xl-3 col-md-6">
+
+        <div class="stat-card">
+
+            <div class="stat-icon">
+
+                <i class="fa-solid fa-flask"></i>
+
+            </div>
+
+            <div>
+
+                <span>Total Tests</span>
+
+                <h3>
+
+                    {{ statistics.total_tests }}
+
+                </h3>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="col-xl-3 col-md-6">
+
+        <div class="stat-card">
+
+            <div class="stat-icon">
+
+                <i class="fa-solid fa-code"></i>
+
+            </div>
+
+            <div>
+
+                <span>Encoded Payloads</span>
+
+                <h3>
+
+                    {{ statistics.encoded_payloads }}
+
+                </h3>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="col-xl-3 col-md-6">
+
+        <div class="stat-card">
+
+            <div class="stat-icon">
+
+                <i class="fa-solid fa-eye"></i>
+
+            </div>
+
+            <div>
+
+                <span>Detected</span>
+
+                <h3>
+
+                    {{ statistics.detected }}
+
+                </h3>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="col-xl-3 col-md-6">
+
+        <div class="stat-card">
+
+            <div class="stat-icon">
+
+                <i class="fa-solid fa-shield"></i>
+
+            </div>
+
+            <div>
+
+                <span>Bypassed</span>
+
+                <h3>
+
+                    {{ statistics.bypassed }}
+
+                </h3>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+</div>
+
+
+<!-- =========================================
+     Advanced Analytics
+========================================= -->
+
+<div class="row g-4 mt-2">
+
+
+    <div class="col-lg-4 col-md-6">
+
+        <div class="analytics-card">
+
+            <h6>
+
+                EVASION RATE
+
+            </h6>
+
+            <h3>
+
+                {{ analytics.evasion_rate }}%
+
+            </h3>
+
+            <small>
+
+                Simulated signature bypass rate
+
+            </small>
+
+        </div>
+
+    </div>
+
+
+    <div class="col-lg-4 col-md-6">
+
+        <div class="analytics-card">
+
+            <h6>
+
+                AVERAGE RISK SCORE
+
+            </h6>
+
+            <h3>
+
+                {{ analytics.average_score }}/100
+
+            </h3>
+
+            <small>
+
+                Average defensive analysis score
+
+            </small>
+
+        </div>
+
+    </div>
+
+
+    <div class="col-lg-4 col-md-6">
+
+        <div class="analytics-card">
+
+            <h6>
+
+                MOST USED METHOD
+
+            </h6>
+
+            <h3>
+
+                {{ analytics.most_used_method }}
+
+            </h3>
+
+            <small>
+
+                Most frequently tested transformation
+
+            </small>
+
+        </div>
+
+    </div>
+
+
+</div>
+
+
+<!-- =========================================
+     Transformation Analytics
+========================================= -->
+
+<div class="row g-4 mt-2">
+
+
+    <!-- Transformation Chart -->
+
+    <div class="col-lg-8">
+
+        <div class="analytics-panel">
+
+            <h5>
+
+                Transformation Performance
+
+            </h5>
+
+            <p>
+
+                Detection and simulated bypass results by method
+
+            </p>
+
+
+            <div class="chart-container">
+
+                <canvas id="transformationChart"></canvas>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- Analysis Summary -->
+
+    <div class="col-lg-4">
+
+        <div class="analysis-summary">
+
+            <h3>
+
+                Analysis Summary
+
+            </h3>
+
+
+            {% for item in transformation_analytics %}
+
+                <div class="analysis-summary-item">
+
+                    <strong>
+
+                        {{ item.method }}
+
+                    </strong>
+
+
+                    <span>
+
+                        Detected: {{ item.detected }}
+
+                        &nbsp;|&nbsp;
+
+                        Bypassed: {{ item.bypassed }}
+
+                    </span>
+
+                </div>
+
+            {% endfor %}
+
+        </div>
+
+    </div>
+
+
+</div>
+
+
+<!-- =========================================
+     Framework Workflow
+========================================= -->
+
+<div class="row g-4 mt-2">
+
+
+    <div class="col-lg-8">
+
+        <div class="panel-card">
+
+            <div class="panel-header">
+
+                <h5>
+
+                    Framework Workflow
+
+                </h5>
+
+
+                <span class="badge bg-info">
+
+                    Educational Lab
+
+                </span>
+
+            </div>
+
+
+            <div class="workflow">
+
+
+                <div class="workflow-step">
+
+                    <div class="workflow-number">
+
+                        1
+
+                    </div>
+
+
+                    <div>
+
+                        <strong>
+
+                            Input Payload
+
+                        </strong>
+
+
+                        <p>
+
+                            Load a controlled test string into the framework.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="workflow-step">
+
+                    <div class="workflow-number">
+
+                        2
+
+                    </div>
+
+
+                    <div>
+
+                        <strong>
+
+                            Transform
+
+                        </strong>
+
+
+                        <p>
+
+                            Apply encoding or string obfuscation techniques.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="workflow-step">
+
+                    <div class="workflow-number">
+
+                        3
+
+                    </div>
+
+
+                    <div>
+
+                        <strong>
+
+                            Test Detection
+
+                        </strong>
+
+
+                        <p>
+
+                            Compare the original and transformed representations.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="workflow-step">
+
+                    <div class="workflow-number">
+
+                        4
+
+                    </div>
+
+
+                    <div>
+
+                        <strong>
+
+                            Analyze Results
+
+                        </strong>
+
+
+                        <p>
+
+                            Measure simulated detection effectiveness.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- Available Techniques -->
+
+    <div class="col-lg-4">
+
+        <div class="panel-card">
+
+            <div class="panel-header">
+
+                <h5>
+
+                    Available Techniques
+
+                </h5>
+
+            </div>
+
+
+            <div class="technique-list">
+
+
+                <div class="technique-item">
+
+                    <span>
+
+                        Base64 Encoding
+
+                    </span>
+
+                    <span class="badge bg-primary">
+
+                        Ready
+
+                    </span>
+
+                </div>
+
+
+                <div class="technique-item">
+
+                    <span>
+
+                        XOR Transformation
+
+                    </span>
+
+                    <span class="badge bg-primary">
+
+                        Ready
+
+                    </span>
+
+                </div>
+
+
+                <div class="technique-item">
+
+                    <span>
+
+                        ROT13
+
+                    </span>
+
+                    <span class="badge bg-primary">
+
+                        Ready
+
+                    </span>
+
+                </div>
+
+
+                <div class="technique-item">
+
+                    <span>
+
+                        String Obfuscation
+
+                    </span>
+
+                    <span class="badge bg-primary">
+
+                        Ready
+
+                    </span>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+</div>
+
+
+<!-- =========================================
+     Chart.js
+========================================= -->
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+<script>
+
+    const transformationData =
+        {{ transformation_analytics | tojson }};
+
+
+    const labels = transformationData.map(
+
+        item => item.method
+
+    );
+
+
+    const detectedData = transformationData.map(
+
+        item => item.detected
+
+    );
+
+
+    const bypassedData = transformationData.map(
+
+        item => item.bypassed
+
+    );
+
+
+    new Chart(
+
+        document.getElementById(
+
+            "transformationChart"
+
+        ),
+
+        {
+
+            type: "bar",
+
+
+            data: {
+
+                labels: labels,
+
+                datasets: [
+
+                    {
+
+                        label: "Detected",
+
+                        data: detectedData,
+
+                        backgroundColor: "#38bdf8",
+
+                        borderWidth: 0
+
+                    },
+
+                    {
+
+                        label: "Bypassed",
+
+                        data: bypassedData,
+
+                        backgroundColor: "#f472b6",
+
+                        borderWidth: 0
+
+                    }
+
+                ]
+
+            },
+
+
+            options: {
+
+                responsive: true,
+
+                maintainAspectRatio: false,
+
+
+                animation: false,
+
+
+                plugins: {
+
+                    legend: {
+
+                        labels: {
+
+                            color: "#cbd5e1"
+
+                        }
+
+                    }
+
+                },
+
+
+                scales: {
+
+                    x: {
+
+                        ticks: {
+
+                            color: "#94a3b8"
+
+                        },
+
+                        grid: {
+
+                            color: "rgba(148, 163, 184, 0.08)"
+
+                        }
+
+                    },
+
+
+                    y: {
+
+                        beginAtZero: true,
+
+                        ticks: {
+
+                            color: "#94a3b8",
+
+                            precision: 0
+
+                        },
+
+                        grid: {
+
+                            color: "rgba(148, 163, 184, 0.08)"
+
+                        }
+
+                    }
+
+                }
+
+            }
+
+        }
+
+    );
+
+</script>
+
+
+{% endblock %}

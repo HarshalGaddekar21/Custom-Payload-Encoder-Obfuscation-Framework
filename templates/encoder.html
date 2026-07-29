@@ -1,0 +1,274 @@
+{% extends "base.html" %}
+
+
+{% block title %}
+
+Encoding Lab | PayloadShield Lab
+
+{% endblock %}
+
+
+{% block page_title %}
+
+Encoding Laboratory
+
+{% endblock %}
+
+
+{% block content %}
+
+
+<div class="row g-4">
+
+
+    <div class="col-lg-7">
+
+
+        <div class="panel-card">
+
+
+            <div class="panel-header">
+
+                <div>
+
+                    <h5>Payload Encoding</h5>
+
+                    <small class="text-secondary">
+
+                        Apply controlled encoding transformations
+
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            {% if error %}
+
+            <div class="alert alert-danger">
+
+                <i class="fa-solid fa-circle-exclamation"></i>
+
+                {{ error }}
+
+            </div>
+
+            {% endif %}
+
+
+            <form method="POST">
+
+
+                <div class="mb-4">
+
+
+                    <label class="form-label">
+
+                        Test Payload
+
+                    </label>
+
+
+                    <textarea
+
+                        name="payload"
+
+                        class="form-control"
+
+                        rows="5"
+
+                        placeholder="Enter a harmless test string..."
+
+                        required
+
+                    ></textarea>
+
+
+                </div>
+
+
+                <div class="mb-4">
+
+
+                    <label class="form-label">
+
+                        Encoding Method
+
+                    </label>
+
+
+                    <select
+
+                        name="method"
+
+                        class="form-select"
+
+                        required
+
+                    >
+
+                        <option value="">
+
+                            Select Encoding Method
+
+                        </option>
+
+
+                        <option value="base64">
+
+                            Base64
+
+                        </option>
+
+
+                        <option value="xor">
+
+                            XOR
+
+                        </option>
+
+
+                        <option value="rot13">
+
+                            ROT13
+
+                        </option>
+
+
+                    </select>
+
+
+                </div>
+
+
+                <div class="mb-4">
+
+
+                    <label class="form-label">
+
+                        XOR Key
+
+                        <span class="text-secondary">
+
+                            (Required only for XOR)
+
+                        </span>
+
+                    </label>
+
+
+                    <input
+
+                        type="text"
+
+                        name="xor_key"
+
+                        class="form-control"
+
+                        placeholder="Enter XOR key"
+
+                    >
+
+
+                </div>
+
+
+                <button
+
+                    type="submit"
+
+                    class="btn btn-primary"
+
+                >
+
+                    <i class="fa-solid fa-lock"></i>
+
+                    Encode Payload
+
+                </button>
+
+
+            </form>
+
+
+        </div>
+
+
+    </div>
+
+
+    <div class="col-lg-5">
+
+
+        <div class="panel-card h-100">
+
+
+            <div class="panel-header">
+
+                <h5>Encoded Output</h5>
+
+            </div>
+
+
+            {% if result %}
+
+
+            <div class="output-box">
+
+
+                <div class="output-label">
+
+                    TRANSFORMED REPRESENTATION
+
+                </div>
+
+
+                <pre>{{ result }}</pre>
+
+
+            </div>
+
+
+            <div class="alert alert-success mt-4">
+
+
+                <i class="fa-solid fa-check-circle"></i>
+
+                Encoding completed successfully.
+
+            </div>
+
+
+            {% else %}
+
+
+            <div class="empty-state">
+
+
+                <i class="fa-solid fa-code"></i>
+
+
+                <p>
+
+                    Encoded output will appear here.
+
+                </p>
+
+
+            </div>
+
+
+            {% endif %}
+
+
+        </div>
+
+
+    </div>
+
+
+</div>
+
+
+{% endblock %}

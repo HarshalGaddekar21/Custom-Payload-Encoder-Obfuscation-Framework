@@ -1,0 +1,542 @@
+{% extends "base.html" %}
+
+
+{% block title %}
+
+Reports | PayloadShield Lab
+
+{% endblock %}
+
+
+{% block page_title %}
+
+Historical Reports
+
+{% endblock %}
+
+
+{% block content %}
+
+
+<div class="mb-4">
+
+    <h3>Historical Analysis Reports</h3>
+
+    <p class="text-secondary">
+
+        Review previously performed encoding, obfuscation, and evasion analysis operations.
+
+    </p>
+
+</div>
+
+
+<!-- Encoding History -->
+
+<div class="panel-card mb-4">
+
+
+    <div class="panel-header">
+
+        <div>
+
+            <h5>
+
+                <i class="fa-solid fa-code text-info me-2"></i>
+
+                Encoding History
+
+            </h5>
+
+            <small class="text-secondary">
+
+                Historical payload encoding operations
+
+            </small>
+
+        </div>
+
+        <span class="badge bg-info">
+
+            {{ encoding_history|length }} Records
+
+        </span>
+
+    </div>
+
+
+    <div class="table-responsive">
+
+
+        <table class="table table-dark table-hover align-middle">
+
+
+            <thead>
+
+                <tr>
+
+                    <th>ID</th>
+
+                    <th>Original Input</th>
+
+                    <th>Method</th>
+
+                    <th>Encoded Output</th>
+
+                    <th>Timestamp</th>
+
+                </tr>
+
+            </thead>
+
+
+            <tbody>
+
+
+                {% for record in encoding_history %}
+
+
+                <tr>
+
+                    <td>
+
+                        <span class="badge bg-secondary">
+
+                            #{{ record["id"] }}
+
+                        </span>
+
+                    </td>
+
+
+                    <td>
+
+                        <code>
+
+                            {{ record["original_payload"] }}
+
+                        </code>
+
+                    </td>
+
+
+                    <td>
+
+                        <span class="badge bg-primary">
+
+                            {{ record["encoding_method"] }}
+
+                        </span>
+
+                    </td>
+
+
+                    <td>
+
+                        <code>
+
+                            {{ record["encoded_output"] }}
+
+                        </code>
+
+                    </td>
+
+
+                    <td>
+
+                        <small class="text-secondary">
+
+                            {{ record["created_at"] }}
+
+                        </small>
+
+                    </td>
+
+                </tr>
+
+
+                {% else %}
+
+
+                <tr>
+
+                    <td colspan="5" class="text-center text-secondary py-4">
+
+                        <i class="fa-solid fa-database mb-2"></i>
+
+                        <br>
+
+                        No encoding records found.
+
+                    </td>
+
+                </tr>
+
+
+                {% endfor %}
+
+
+            </tbody>
+
+
+        </table>
+
+
+    </div>
+
+
+</div>
+
+
+<!-- Obfuscation History -->
+
+<div class="panel-card mb-4">
+
+
+    <div class="panel-header">
+
+        <div>
+
+            <h5>
+
+                <i class="fa-solid fa-shield-halved text-info me-2"></i>
+
+                Obfuscation History
+
+            </h5>
+
+            <small class="text-secondary">
+
+                Historical controlled string transformation operations
+
+            </small>
+
+        </div>
+
+        <span class="badge bg-info">
+
+            {{ obfuscation_history|length }} Records
+
+        </span>
+
+    </div>
+
+
+    <div class="table-responsive">
+
+
+        <table class="table table-dark table-hover align-middle">
+
+
+            <thead>
+
+                <tr>
+
+                    <th>ID</th>
+
+                    <th>Original Input</th>
+
+                    <th>Method</th>
+
+                    <th>Transformed Output</th>
+
+                    <th>Timestamp</th>
+
+                </tr>
+
+            </thead>
+
+
+            <tbody>
+
+
+                {% for record in obfuscation_history %}
+
+
+                <tr>
+
+                    <td>
+
+                        <span class="badge bg-secondary">
+
+                            #{{ record["id"] }}
+
+                        </span>
+
+                    </td>
+
+
+                    <td>
+
+                        <code>
+
+                            {{ record["original_payload"] }}
+
+                        </code>
+
+                    </td>
+
+
+                    <td>
+
+                        <span class="badge bg-primary">
+
+                            {{ record["obfuscation_method"] }}
+
+                        </span>
+
+                    </td>
+
+
+                    <td>
+
+                        <code>
+
+                            {{ record["obfuscated_output"] }}
+
+                        </code>
+
+                    </td>
+
+
+                    <td>
+
+                        <small class="text-secondary">
+
+                            {{ record["created_at"] }}
+
+                        </small>
+
+                    </td>
+
+                </tr>
+
+
+                {% else %}
+
+
+                <tr>
+
+                    <td colspan="5" class="text-center text-secondary py-4">
+
+                        <i class="fa-solid fa-database mb-2"></i>
+
+                        <br>
+
+                        No obfuscation records found.
+
+                    </td>
+
+                </tr>
+
+
+                {% endfor %}
+
+
+            </tbody>
+
+
+        </table>
+
+
+    </div>
+
+
+</div>
+
+
+<!-- Evasion History -->
+
+<div class="panel-card">
+
+
+    <div class="panel-header">
+
+        <div>
+
+            <h5>
+
+                <i class="fa-solid fa-shield-virus text-info me-2"></i>
+
+                Evasion Testing History
+
+            </h5>
+
+            <small class="text-secondary">
+
+                Historical simulated detection comparison results
+
+            </small>
+
+        </div>
+
+        <span class="badge bg-info">
+
+            {{ evasion_history|length }} Records
+
+        </span>
+
+    </div>
+
+
+    <div class="table-responsive">
+
+
+        <table class="table table-dark table-hover align-middle">
+
+
+            <thead>
+
+                <tr>
+
+                    <th>ID</th>
+
+                    <th>Method</th>
+
+                    <th>Original Detection</th>
+
+                    <th>Transformed Detection</th>
+
+                    <th>Result</th>
+
+                    <th>Timestamp</th>
+
+                </tr>
+
+            </thead>
+
+
+            <tbody>
+
+
+                {% for record in evasion_history %}
+
+
+                <tr>
+
+                    <td>
+
+                        <span class="badge bg-secondary">
+
+                            #{{ record["id"] }}
+
+                        </span>
+
+                    </td>
+
+
+                    <td>
+
+                        <strong>
+
+                            {{ record["transformation_method"] }}
+
+                        </strong>
+
+                    </td>
+
+
+                    <td>
+
+                        <span class="badge bg-danger">
+
+                            {{ record["original_detection"] }}
+
+                        </span>
+
+                    </td>
+
+
+                    <td>
+
+                        {% if record["transformed_detection"] == "NOT DETECTED" %}
+
+                        <span class="badge bg-success">
+
+                            {{ record["transformed_detection"] }}
+
+                        </span>
+
+                        {% else %}
+
+                        <span class="badge bg-danger">
+
+                            {{ record["transformed_detection"] }}
+
+                        </span>
+
+                        {% endif %}
+
+                    </td>
+
+
+                    <td>
+
+                        {% if "BYPASSED" in record["evasion_status"] %}
+
+                        <span class="badge bg-success">
+
+                            BYPASSED
+
+                        </span>
+
+                        {% else %}
+
+                        <span class="badge bg-danger">
+
+                            DETECTED
+
+                        </span>
+
+                        {% endif %}
+
+                    </td>
+
+
+                    <td>
+
+                        <small class="text-secondary">
+
+                            {{ record["created_at"] }}
+
+                        </small>
+
+                    </td>
+
+                </tr>
+
+
+                {% else %}
+
+
+                <tr>
+
+                    <td colspan="6" class="text-center text-secondary py-4">
+
+                        <i class="fa-solid fa-database mb-2"></i>
+
+                        <br>
+
+                        No evasion records found.
+
+                    </td>
+
+                </tr>
+
+
+                {% endfor %}
+
+
+            </tbody>
+
+
+        </table>
+
+
+    </div>
+
+
+</div>
+
+
+{% endblock %}

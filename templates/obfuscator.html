@@ -1,0 +1,249 @@
+{% extends "base.html" %}
+
+
+{% block title %}
+
+Obfuscation Lab | PayloadShield Lab
+
+{% endblock %}
+
+
+{% block page_title %}
+
+Obfuscation Laboratory
+
+{% endblock %}
+
+
+{% block content %}
+
+
+<div class="row g-4">
+
+
+    <div class="col-lg-7">
+
+
+        <div class="panel-card">
+
+
+            <div class="panel-header">
+
+                <div>
+
+                    <h5>String Obfuscation</h5>
+
+                    <small class="text-secondary">
+
+                        Apply controlled reversible transformations
+
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            {% if error %}
+
+            <div class="alert alert-danger">
+
+                <i class="fa-solid fa-circle-exclamation"></i>
+
+                {{ error }}
+
+            </div>
+
+            {% endif %}
+
+
+            <form method="POST">
+
+
+                <div class="mb-4">
+
+
+                    <label class="form-label">
+
+                        Test String
+
+                    </label>
+
+
+                    <textarea
+
+                        name="payload"
+
+                        class="form-control"
+
+                        rows="5"
+
+                        placeholder="Enter a harmless test string..."
+
+                        required
+
+                    ></textarea>
+
+
+                </div>
+
+
+                <div class="mb-4">
+
+
+                    <label class="form-label">
+
+                        Obfuscation Technique
+
+                    </label>
+
+
+                    <select
+
+                        name="method"
+
+                        class="form-select"
+
+                        required
+
+                    >
+
+                        <option value="">
+
+                            Select Technique
+
+                        </option>
+
+
+                        <option value="random">
+
+                            Random Character Insertion
+
+                        </option>
+
+
+                        <option value="split">
+
+                            Character Splitting & Concatenation
+
+                        </option>
+
+
+                        <option value="reverse">
+
+                            Reversible Transformation
+
+                        </option>
+
+
+                        <option value="escape">
+
+                            Escape-Sequence Representation
+
+                        </option>
+
+
+                    </select>
+
+
+                </div>
+
+
+                <button
+
+                    type="submit"
+
+                    class="btn btn-primary"
+
+                >
+
+                    <i class="fa-solid fa-shuffle"></i>
+
+                    Apply Obfuscation
+
+                </button>
+
+
+            </form>
+
+
+        </div>
+
+
+    </div>
+
+
+    <div class="col-lg-5">
+
+
+        <div class="panel-card h-100">
+
+
+            <div class="panel-header">
+
+                <h5>Obfuscated Output</h5>
+
+            </div>
+
+
+            {% if result %}
+
+
+            <div class="output-box">
+
+
+                <div class="output-label">
+
+                    TRANSFORMED REPRESENTATION
+
+                </div>
+
+
+                <pre>{{ result }}</pre>
+
+
+            </div>
+
+
+            <div class="alert alert-success mt-4">
+
+
+                <i class="fa-solid fa-check-circle"></i>
+
+                Obfuscation completed successfully.
+
+            </div>
+
+
+            {% else %}
+
+
+            <div class="empty-state">
+
+
+                <i class="fa-solid fa-shuffle"></i>
+
+
+                <p>
+
+                    Obfuscated output will appear here.
+
+                </p>
+
+
+            </div>
+
+
+            {% endif %}
+
+
+        </div>
+
+
+    </div>
+
+
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,428 @@
+{% extends "base.html" %}
+
+{% block title %}
+Evasion Testing | PayloadShield Lab
+{% endblock %}
+
+{% block page_title %}
+Evasion Testing
+{% endblock %}
+
+{% block content %}
+
+<div class="mb-4">
+
+    <h3>Payload Transformation Analysis</h3>
+
+    <p class="text-secondary">
+        Evaluate how controlled payload transformations affect simulated
+        signature-based detection.
+    </p>
+
+</div>
+
+
+<div class="row g-4">
+
+
+    <!-- INPUT SECTION -->
+
+    <div class="col-xl-5 col-lg-6">
+
+        <div class="panel-card">
+
+            <div class="panel-header">
+
+                <div>
+
+                    <h5>
+                        <i class="fa-solid fa-flask"></i>
+                        Detection Test
+                    </h5>
+
+                    <small class="text-secondary">
+                        Configure a controlled transformation test
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            {% if error %}
+
+            <div class="alert alert-danger">
+
+                <i class="fa-solid fa-circle-exclamation"></i>
+
+                {{ error }}
+
+            </div>
+
+            {% endif %}
+
+
+            <form method="POST">
+
+
+                <div class="mb-4">
+
+                    <label class="form-label">
+
+                        Original Test String
+
+                    </label>
+
+                    <textarea
+                        name="original_payload"
+                        class="form-control"
+                        rows="4"
+                        placeholder="Enter a harmless test string..."
+                        required
+                    ></textarea>
+
+                    <small class="text-secondary">
+
+                        Example: TEST_PAYLOAD_DEMO
+
+                    </small>
+
+                </div>
+
+
+                <div class="mb-4">
+
+                    <label class="form-label">
+
+                        Transformed Representation
+
+                    </label>
+
+                    <textarea
+                        name="transformed_payload"
+                        class="form-control"
+                        rows="4"
+                        placeholder="Enter the encoded or transformed representation..."
+                        required
+                    ></textarea>
+
+                </div>
+
+
+                <div class="mb-4">
+
+                    <label class="form-label">
+
+                        Transformation Method
+
+                    </label>
+
+                    <select
+                        name="transformation_method"
+                        class="form-select"
+                        required
+                    >
+
+                        <option value="">
+                            Select Transformation Method
+                        </option>
+
+                        <option>Base64</option>
+
+                        <option>XOR</option>
+
+                        <option>ROT13</option>
+
+                        <option>Random Character Insertion</option>
+
+                        <option>Character Splitting</option>
+
+                        <option>Reversible Transformation</option>
+
+                        <option>Escape Sequence</option>
+
+                    </select>
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    class="btn btn-primary w-100"
+                >
+
+                    <i class="fa-solid fa-shield-halved"></i>
+
+                    Run Detection Analysis
+
+                </button>
+
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <!-- RESULTS SECTION -->
+
+    <div class="col-xl-7 col-lg-6">
+
+        <div class="panel-card">
+
+            <div class="panel-header">
+
+                <div>
+
+                    <h5>
+
+                        <i class="fa-solid fa-chart-line"></i>
+
+                        Analysis Result
+
+                    </h5>
+
+                    <small class="text-secondary">
+
+                        Detection and defensive transformation analysis
+
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            {% if result %}
+
+
+            <!-- DETECTION STATUS -->
+
+            <div class="result-grid">
+
+
+                <div class="result-item">
+
+                    <span>
+
+                        Original Detection
+
+                    </span>
+
+                    <strong>
+
+                        {{ result.original_status }}
+
+                    </strong>
+
+                </div>
+
+
+                <div class="result-item">
+
+                    <span>
+
+                        Transformed Detection
+
+                    </span>
+
+                    <strong>
+
+                        {{ result.transformed_status }}
+
+                    </strong>
+
+                </div>
+
+
+            </div>
+
+
+            <!-- EVASION STATUS -->
+
+            <div class="alert alert-success mt-4">
+
+                <i class="fa-solid fa-circle-check"></i>
+
+                <strong>
+
+                    {{ result.evasion_status }}
+
+                </strong>
+
+            </div>
+
+
+            <!-- MATCHED SIGNATURES -->
+
+            <div class="row g-3 mt-2">
+
+
+                <div class="col-md-6">
+
+                    <div class="output-box">
+
+                        <div class="output-label">
+
+                            ORIGINAL SIGNATURES
+
+                        </div>
+
+                        <pre>{{ result.original_matches }}</pre>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-6">
+
+                    <div class="output-box">
+
+                        <div class="output-label">
+
+                            TRANSFORMED SIGNATURES
+
+                        </div>
+
+                        <pre>{{ result.transformed_matches }}</pre>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+            <!-- DEFENSIVE ANALYSIS -->
+
+            <div class="analysis-summary mt-4">
+
+
+                <h5>
+
+                    <i class="fa-solid fa-shield-halved"></i>
+
+                    Defensive Transformation Analysis
+
+                </h5>
+
+
+                <div class="result-grid">
+
+
+                    <div class="result-item">
+
+                        <span>
+
+                            Entropy
+
+                        </span>
+
+                        <strong>
+
+                            {{ result.defensive_analysis.entropy }}
+
+                        </strong>
+
+                    </div>
+
+
+                    <div class="result-item">
+
+                        <span>
+
+                            Risk Level
+
+                        </span>
+
+                        <strong>
+
+                            {{ result.defensive_analysis.risk_level }}
+
+                        </strong>
+
+                    </div>
+
+
+                    <div class="result-item">
+
+                        <span>
+
+                            Risk Score
+
+                        </span>
+
+                        <strong>
+
+                            {{ result.defensive_analysis.risk_score }}/100
+
+                        </strong>
+
+                    </div>
+
+
+                </div>
+
+
+                <div class="output-box mt-4">
+
+                    <div class="output-label">
+
+                        TRANSFORMATION INDICATORS
+
+                    </div>
+
+
+                    <ul class="mb-0">
+
+
+                        {% for indicator in result.defensive_analysis.indicators %}
+
+                        <li>
+
+                            {{ indicator }}
+
+                        </li>
+
+                        {% endfor %}
+
+
+                    </ul>
+
+                </div>
+
+
+            </div>
+
+
+            {% else %}
+
+
+            <div class="empty-state">
+
+                <i class="fa-solid fa-shield-halved"></i>
+
+                <p>
+
+                    Run a detection test to view transformation analysis.
+
+                </p>
+
+            </div>
+
+
+            {% endif %}
+
+
+        </div>
+
+    </div>
+
+
+</div>
+
+
+{% endblock %}

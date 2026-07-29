@@ -1,0 +1,266 @@
+{% extends "base.html" %}
+
+{% block title %}
+Comparison Analysis | PayloadShield Lab
+{% endblock %}
+
+{% block page_title %}
+Transformation Comparison
+{% endblock %}
+
+{% block content %}
+
+<div class="panel-card mb-4">
+
+    <div class="panel-header">
+
+        <div>
+
+            <h5>Multi-Technique Comparison</h5>
+
+            <small class="text-secondary">
+                Compare simulated signature detection across transformations
+            </small>
+
+        </div>
+
+    </div>
+
+
+    {% if error %}
+
+    <div class="alert alert-danger">
+        {{ error }}
+    </div>
+
+    {% endif %}
+
+
+    <form method="POST">
+
+        <div class="row g-3">
+
+            <div class="col-lg-8">
+
+                <label class="form-label">
+                    Controlled Test String
+                </label>
+
+                <input
+                    type="text"
+                    name="payload"
+                    class="form-control"
+                    placeholder="Example: TEST_PAYLOAD_DEMO"
+                    required
+                >
+
+            </div>
+
+
+            <div class="col-lg-4">
+
+                <label class="form-label">
+                    XOR Key
+                </label>
+
+                <input
+                    type="text"
+                    name="xor_key"
+                    class="form-control"
+                    value="SECURITY"
+                >
+
+            </div>
+
+        </div>
+
+
+        <button
+            type="submit"
+            class="btn btn-primary mt-4"
+        >
+
+            <i class="fa-solid fa-chart-column"></i>
+
+            Run Complete Comparison
+
+        </button>
+
+    </form>
+
+</div>
+
+
+{% if statistics %}
+
+<!-- Statistics -->
+
+<div class="row g-4 mb-4 comparison-statistics">
+
+    <div class="col-lg-3 col-md-6">
+
+        <div class="stat-card comparison-stat-card">
+
+            <div>
+
+                <span>Total Tests</span>
+
+                <strong>
+                    {{ statistics.total_tests }}
+                </strong>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="col-lg-3 col-md-6">
+
+        <div class="stat-card comparison-stat-card">
+
+            <div>
+
+                <span>Bypassed</span>
+
+                <strong>
+                    {{ statistics.bypassed }}
+                </strong>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="col-lg-3 col-md-6">
+
+        <div class="stat-card comparison-stat-card">
+
+            <div>
+
+                <span>Detected</span>
+
+                <strong>
+                    {{ statistics.detected }}
+                </strong>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="col-lg-3 col-md-6">
+
+        <div class="stat-card comparison-stat-card">
+
+            <div>
+
+                <span>Evasion Rate</span>
+
+                <strong>
+                    {{ statistics.evasion_rate }}%
+                </strong>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- Results -->
+
+<div class="panel-card comparison-results-card">
+
+    <div class="panel-header">
+
+        <h5>Transformation Analysis Results</h5>
+
+    </div>
+
+
+    <div class="table-responsive">
+
+        <table class="table table-dark table-hover comparison-table">
+
+            <thead>
+
+                <tr>
+
+                    <th>Method</th>
+
+                    <th>Original Detection</th>
+
+                    <th>Transformed Detection</th>
+
+                    <th>Result</th>
+
+                </tr>
+
+            </thead>
+
+
+            <tbody>
+
+                {% for result in results %}
+
+                <tr>
+
+                    <td>
+                        {{ result.method }}
+                    </td>
+
+                    <td>
+                        {{ result.original_detection }}
+                    </td>
+
+                    <td>
+                        {{ result.transformed_detection }}
+                    </td>
+
+                    <td>
+
+                        {% if result.result == "BYPASSED" %}
+
+                        <span class="badge bg-success">
+                            BYPASSED
+                        </span>
+
+                        {% elif result.result == "DETECTED" %}
+
+                        <span class="badge bg-danger">
+                            DETECTED
+                        </span>
+
+                        {% else %}
+
+                        <span class="badge bg-secondary">
+                            NOT DETECTED
+                        </span>
+
+                        {% endif %}
+
+                    </td>
+
+                </tr>
+
+                {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
+{% endif %}
+
+{% endblock %}
