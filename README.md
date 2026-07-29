@@ -810,7 +810,7 @@ https://github.com/HarshalGaddekar21
 **LinkedIn**
 
 ```
-https://www.linkedin.com/in/harshalgaddekar/
+www.linkedin.com/in/harshal-gaddekar-b09b05299
 ```
 
 ---
