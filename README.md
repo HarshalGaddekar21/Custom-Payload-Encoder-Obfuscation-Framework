@@ -623,19 +623,83 @@ The dashboard automatically calculates:
 
 ---
 
+---
+
 # 📷 Project Screenshots
 
-The repository includes screenshots of:
+The following screenshots demonstrate the primary modules of PayloadShield Lab.
 
-- Home Dashboard
-- Encoding Lab
-- Obfuscation Lab
-- Evasion Testing
-- Comparison Analysis
-- Reports
-- About Page
+## 🏠 Dashboard
 
-> Store screenshots inside the **screenshots/** folder before publishing the repository.
+![Dashboard](screenshots/01_dashboard.png)
+
+Displays overall project statistics, transformation analytics, historical activity, average risk score, and evasion metrics.
+
+---
+
+## 🔐 Encoding Lab
+
+![Encoding Lab](screenshots/02_encoding_lab.png)
+
+Demonstrates Base64, XOR, and ROT13 encoding techniques for educational payload transformation.
+
+---
+
+## 🔄 Obfuscation Lab
+
+![Obfuscation Lab](screenshots/03_obfuscation_lab.png)
+
+Applies multiple string transformation techniques including random insertion, character splitting, reverse transformation, and escape-sequence representation.
+
+---
+
+## 🛡 Evasion Testing (Detected)
+
+![Evasion Detected](screenshots/04_evasion_detected.png)
+
+Shows a simulated signature that remains detectable after transformation together with defensive analysis and risk scoring.
+
+---
+
+## ✅ Evasion Testing (Bypassed)
+
+![Evasion Bypassed](screenshots/05_evasion_bypassed.png)
+
+Demonstrates a simulated signature that is no longer detected after transformation while providing entropy analysis and transformation indicators.
+
+---
+
+## 📊 Comparison Analysis
+
+![Comparison Analysis](screenshots/06_comparison.png)
+
+Compares multiple transformation techniques simultaneously and summarizes detection outcomes and overall evasion statistics.
+
+---
+
+## 📑 Reports
+
+![Reports](screenshots/07_reports.png)
+
+Displays historical records of encoding operations, obfuscation activities, and evasion testing stored in the SQLite database.
+
+---
+
+## ℹ️ About Project
+
+![About Project](screenshots/08_about_project.png)
+
+Provides an overview of the project, its objectives, technologies, and educational purpose.
+
+---
+
+## 📈 Dashboard Analytics
+
+![Dashboard Analytics](screenshots/09_dashboard_final.png)
+
+Illustrates the populated dashboard after multiple analyses, including analytics, risk metrics, and transformation statistics.
+
+---
 
 ---
 
