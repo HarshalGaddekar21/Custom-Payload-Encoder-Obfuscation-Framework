@@ -1,6 +1,6 @@
-# 🛡 PayloadShield Lab
+# 🛡 Custom Payload Encoder & Obfuscation Framework
 
-## Custom Payload Encoder & Obfuscation Framework
+### Educational Cybersecurity Research Platform
 
 ![Python](https://img.shields.io/badge/Python-3.13-blue?style=for-the-badge&logo=python)
 ![Flask](https://img.shields.io/badge/Flask-3.1-black?style=for-the-badge&logo=flask)
@@ -14,7 +14,7 @@
 
 A professional **Cybersecurity Internship Project** developed using **Python**, **Flask**, **SQLite**, **Bootstrap 5**, **HTML5**, and **CSS3**.
 
-PayloadShield Lab is a web-based educational cybersecurity research platform that demonstrates payload encoding, string obfuscation, simulated signature detection, transformation comparison, defensive analysis, dashboard analytics, and historical reporting in a safe laboratory environment.
+Custom Payload Encoder & Obfuscation Framework is a web-based educational cybersecurity research platform that demonstrates payload encoding, string obfuscation, simulated signature detection, transformation comparison, defensive analysis, dashboard analytics, and historical reporting in a safe laboratory environment.
 
 > **Disclaimer:** This project has been developed strictly for cybersecurity education, academic research, defensive analysis, and authorized laboratory demonstrations. It does **not** create, deploy, or execute malware. All payloads and signatures used are simulated for educational purposes only.
 
@@ -26,7 +26,7 @@ PayloadShield Lab is a web-based educational cybersecurity research platform tha
 
 MCA Graduate
 
-Cybersecurity Enthusiast | Python Developer | SOC Analyst Aspirant
+Cybersecurity Enthusiast • Python Developer • SOC Analyst Aspirant
 
 ---
 
@@ -56,7 +56,7 @@ Cybersecurity Enthusiast | Python Developer | SOC Analyst Aspirant
 
 # 📖 Project Overview
 
-PayloadShield Lab is a modular cybersecurity learning platform that demonstrates how different payload transformation techniques affect signature-based detection systems within a controlled environment.
+Custom Payload Encoder & Obfuscation Framework is a modular cybersecurity learning platform that demonstrates how different payload transformation techniques affect signature-based detection systems within a controlled environment.
 
 Modern security products frequently rely on pattern matching, signatures, heuristics, and statistical analysis to identify suspicious content. Various encoding and string transformation techniques may alter the representation of information while preserving the original content.
 
@@ -68,7 +68,7 @@ The application is designed to demonstrate defensive cybersecurity concepts with
 
 # 🎯 Project Objectives
 
-The primary objectives of PayloadShield Lab are:
+The primary objectives of Custom Payload Encoder & Obfuscation Framework are:
 
 - Demonstrate common payload encoding techniques.
 - Demonstrate multiple string obfuscation methods.
@@ -98,6 +98,21 @@ The primary objectives of PayloadShield Lab are:
 - 🌐 Flask Web Interface
 - 🎨 Responsive Bootstrap Dashboard
 - ⚙ Modular Python Architecture
+
+---
+
+## 📈 Project Statistics
+
+- **Programming Language:** Python 3.13
+- **Framework:** Flask
+- **Database:** SQLite
+- **Frontend:** HTML5, CSS3, Bootstrap 5
+- **Modules:** 8+
+- **Templates:** 9
+- **Database Tables:** 4
+- **Transformation Techniques:** 7
+- **Defensive Analysis Indicators:** 4
+- **Project Type:** Cybersecurity Internship Project
 
 ---
 
@@ -204,7 +219,7 @@ Historical Reports Available
 # 📂 Project Structure
 
 ```text
-PayloadShieldLab/
+CustomPayloadEncoderObfuscationFramework/
 │
 ├── app.py
 ├── config.py
@@ -397,7 +412,7 @@ The report history allows users to review previous analyses and monitor overall 
 ## Clone the Repository
 
 ```bash
-git clone https://github.com/HarshalGaddekar21/PayloadShieldLab.git
+git clone https://github.com/HarshalGaddekar21/Custom-Payload-Encoder-Obfuscation-Framework.git
 ```
 
 > Replace the repository URL with your actual GitHub repository URL if it is different.
@@ -407,7 +422,7 @@ git clone https://github.com/HarshalGaddekar21/PayloadShieldLab.git
 ## Navigate to the Project Directory
 
 ```bash
-cd PayloadShieldLab
+cd CustomPayloadEncoderObfuscationFramework
 ```
 
 ---
@@ -627,7 +642,7 @@ The dashboard automatically calculates:
 
 # 📷 Project Screenshots
 
-The following screenshots demonstrate the primary modules of PayloadShield Lab.
+The following screenshots demonstrate the primary modules of Custom Payload Encoder & Obfuscation Framework.
 
 ## 🏠 Dashboard
 
@@ -695,7 +710,7 @@ Provides an overview of the project, its objectives, technologies, and education
 
 ## 📈 Dashboard Analytics
 
-![Dashboard Analytics](screenshots/09_dashboard_final.png)
+![Dashboard Analytics](screenshots/09_dashboard_analytics.png)
 
 Illustrates the populated dashboard after multiple analyses, including analytics, risk metrics, and transformation statistics.
 
@@ -761,7 +776,7 @@ Unauthorized use against systems or networks without explicit permission is proh
 
 # ⚠ Disclaimer
 
-PayloadShield Lab is an educational research framework.
+Custom Payload Encoder & Obfuscation Framework is an educational research framework.
 
 The application:
 
@@ -823,10 +838,10 @@ Your support helps showcase educational cybersecurity projects and encourages co
 
 ---
 
-## 🛡 PayloadShield Lab
+## 🛡 Custom Payload Encoder & Obfuscation Framework
 
-**Custom Payload Encoder & Obfuscation Framework**
+**Educational Cybersecurity Research Platform**
 
 **Cybersecurity Internship Project • 2026**
 
-Made with ❤️ using Python, Flask, SQLite, and Bootstrap.
+Made with ❤️ using Python, Flask, SQLite, Bootstrap 5, HTML5, and CSS3.
